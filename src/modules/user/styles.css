@@ -1,0 +1,150 @@
+/* User Component */
+.users-component-container {
+  margin: 30px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Selected User */
+.selected-user-container {
+  margin: 24px 0;
+  padding: 18px 24px;
+  background: #f8fbff;
+  border: 1px solid #b0c4de;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(106, 147, 189, 0.08);
+}
+.selected-user-container h2 {
+  font-size: 1.3rem;
+  color: #2b7ac9;
+  margin-bottom: 12px;
+}
+.selected-user-container .field {
+  font-size: 1rem;
+  margin: 6px 0;
+  color: #333;
+  display: flex;
+  flex-direction: row;
+}
+.selected-user-container .field label {
+  width: 75px;
+  font-weight: 500;
+}
+.selected-user-container .field input {
+  font-size: 14px;
+  padding: 0;
+}
+.selected-user-container .actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.selected-user-container button {
+  padding: 7px;
+  margin-top: 15px;
+  margin-right: 17px;
+  width: 60px;
+  font-size: 15px;
+  background-color: #6a93bd;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.selected-user-container button:hover {
+  background-color: #5a7aa0;
+}
+.selected-user-container button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* User List */
+.user-list-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.user-list-container {
+  width: 100%;
+  border-spacing: 0;
+  margin-bottom: 40px;
+}
+.user-list-data-header {
+  background-color: #6a93bd;
+  height: 40px;
+  text-align: center;
+}
+.user-list-data-row {
+  height: 30px;
+  text-align: center;
+  background-color: #f3f9ff;
+}
+.user-list-data-row:nth-child(odd) {
+  background-color: #c5d6e7;
+}
+.user-list-action-button {
+  color: #2b7ac9;
+  margin-right: 10px;
+}
+.user-list-action-button:hover {
+  color: #7242b4;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* Create User Form */
+.create-user-form-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.create-user-form-container {
+  display: flex;
+  flex-direction: column;
+}
+.create-user-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.create-user-form input {
+  margin-bottom: 10px;
+  padding: 5px;
+  font-size: 16px;
+}
+.create-user-form label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 12px;
+  font-weight: 500;
+  gap: 10px;
+}
+.create-user-form select {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.create-user-form button[type='submit'] {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #6a93bd;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.create-user-form button[type='submit']:hover {
+  background-color: #5a7aa0;
+}
+.create-user-form button[type='submit']:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

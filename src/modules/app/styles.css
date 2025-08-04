@@ -1,0 +1,18 @@
+body {
+  font-family: system-ui;
+}
+
+.error-message {
+  color: red;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.reset-error-button {
+  background-color: transparent;
+  border: none;
+  color: red;
+  cursor: pointer;
+  font-size: 16px;
+}

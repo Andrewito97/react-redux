@@ -1,6 +1,5 @@
 import React from 'react'
 import { createRoot, Root } from 'react-dom/client'
-import { Provider } from 'react-redux'
 import { App } from './modules/app/App'
 
 const container: Element = document.getElementById('root') as Element

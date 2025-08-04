@@ -4,10 +4,15 @@ import { deleteUser, updateUser } from './api'
 import { UserRole } from './types'
 
 export const SelectedUser = () => {
+  // dispatch needed for sending actions to the store
   const dispatch = useAppDispatch()
+
+  // selectors to get state from the store and subscribe on component re-rendering
+  // always extract only the needed state fields to avoid unnecessary re-renders
   const selectedUser = useAppSelector((state) => state.users.selectedUser)
 
-  // Local state for editing
+  // Local states
+  // There is no need to store this in the Redux store as it is only used for editing
   const [isEditing, setIsEditing] = useState(false)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -22,14 +27,13 @@ export const SelectedUser = () => {
     }
   }, [selectedUser])
 
+  // Handlers for user actions
   const handleIsEditing = () => {
     setIsEditing((prev) => !prev)
   }
-
   const handleUpdateUser = () => {
     dispatch(updateUser({ id: selectedUser.id, name, email, role }))
   }
-
   const handleDeleteUser = () => {
     dispatch(deleteUser(selectedUser.id))
     setIsEditing(false)
@@ -45,7 +49,7 @@ export const SelectedUser = () => {
             {isEditing ? (
               <input
                 type="text"
-                defaultValue={selectedUser.name}
+                value={selectedUser.name}
                 onChange={(e) => setName(e.target.value)}
               />
             ) : (
@@ -57,7 +61,7 @@ export const SelectedUser = () => {
             {isEditing ? (
               <input
                 type="email"
-                defaultValue={selectedUser.email}
+                value={selectedUser.email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             ) : (
@@ -68,7 +72,7 @@ export const SelectedUser = () => {
             <label>Role: </label>
             {isEditing ? (
               <select
-                defaultValue={selectedUser.role}
+                value={selectedUser.role}
                 onChange={(e) => setRole(e.target.value as UserRole)}
               >
                 <option value={UserRole.ADMIN}>Admin</option>

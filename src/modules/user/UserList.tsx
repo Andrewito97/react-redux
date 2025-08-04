@@ -5,18 +5,28 @@ import './styles.css'
 import { userSlice } from './slice'
 
 export const UserList = () => {
-  const dispatchUsers = useAppDispatch()
-  const { loadingUsers, users } = useAppSelector((state) => state.users)
+  // dispatch needed for sending actions to the store
+  const dispatch = useAppDispatch()
+
+  // selectors to get state from the store and subscribe on component re-rendering
+  // always extract only the needed state fields to avoid unnecessary re-renders
+  const users = useAppSelector((state) => state.users.users)
+  const loadingUsers = useAppSelector((state) => state.users.loadingUsers)
+
+  // sync actions update the store
   const { selectUser } = userSlice.actions
 
+  // Fetch users when the component mounts
   useEffect(() => {
-    dispatchUsers(getUsers())
-  }, [dispatchUsers])
+    dispatch(getUsers())
+  }, [dispatch])
 
+  // Handler for user action
   const handleSelectUser = (userId: string) => {
-    dispatchUsers(selectUser(userId))
+    dispatch(selectUser(userId))
   }
 
+  // Basic fallback for loading state
   if (loadingUsers) {
     return <div>Loading...</div>
   }

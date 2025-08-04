@@ -6,10 +6,18 @@ import { createUser } from './api'
 import { userSlice } from './slice'
 
 export const CreateUserForm = () => {
+  // dispatch needed for sending actions to the store
   const dispatch = useAppDispatch()
-  const { creatingUser, creatingError } = useAppSelector((state) => state.users)
+
+  // selectors to get state from the store and subscribe on component re-rendering
+  // always extract only the needed state fields to avoid unnecessary re-renders
+  const creatingUser = useAppSelector((state) => state.users.creatingUser)
+  const creatingError = useAppSelector((state) => state.users.creatingError)
+
+  // sync actions update the store
   const { resetCreatingError } = userSlice.actions
 
+  // Handlers for user actions
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
@@ -17,9 +25,9 @@ export const CreateUserForm = () => {
     const email = formData.get('email') as string
     const role = formData.get('role') as UserRole
 
+    // this is where we dispatch the action to create a user and update the store
     dispatch(createUser({ name, email, role }))
   }
-
   const handleResetError = () => {
     dispatch(resetCreatingError())
   }

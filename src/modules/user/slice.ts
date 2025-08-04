@@ -2,6 +2,10 @@ import { createSlice } from '@reduxjs/toolkit'
 import { createUser, deleteUser, getUsers, updateUser } from './api'
 import { UserState } from './types'
 
+// slice for managing user state
+// it contains initial state, reducers and extra reducers for async actions
+// reducers are synchronous actions that update the state
+// extra reducers handle async actions like API calls
 export const userSlice = createSlice({
   name: 'user',
   initialState: {

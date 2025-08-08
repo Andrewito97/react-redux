@@ -14,6 +14,12 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(errorMiddleware)
 })
 
+// Subscribe to store changes
+// This is useful for debugging or logging state changes
+store.subscribe(() => {
+  console.log('State changed:', store.getState())
+})
+
 type RootState = ReturnType<typeof store.getState>
 type AppDispatch = typeof store.dispatch
 
